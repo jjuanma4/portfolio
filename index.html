@@ -4,145 +4,426 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Juan Manuel Cuadrado Muñiz · Portfolio</title>
-  <meta name="description" content="Portfolio de Juan Manuel Cuadrado Muñiz, estudiante de 2.º de DAM.">
+  <meta name="description" content="Portfolio de Juan Manuel Cuadrado Muñiz, estudiante de 2.º de DAM en Badajoz. Busco prácticas o un primer puesto como desarrollador junior.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --verde: #1c2e2b;
+      --verde-medio: #2b443f;
+      --verde-suave: #3a5a53;
       --ambar: #e8b04b;
-      --ambar-oscuro: #9a5f10;
+      --ambar-oscuro: #8a5410;
       --fondo: #fbfaf6;
+      --fondo-2: #f3f1e8;
+      --tarjeta: #ffffff;
       --texto: #212b29;
       --gris: #5b6664;
+      --linea: #dcd9cd;
+      --titulo: #1c2e2b;
+      --enlace: #8a5410;
+      --chip: #f6e6c2;
+    }
+    :root[data-tema="oscuro"] {
+      --fondo: #101716;
+      --fondo-2: #151e1d;
+      --tarjeta: #1a2624;
+      --texto: #e6edeb;
+      --gris: #a3b0ad;
+      --linea: #2c3b38;
+      --titulo: #e8b04b;
+      --enlace: #e8b04b;
+      --chip: #3b3320;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
     body {
       margin: 0;
       font-family: "DM Sans", system-ui, sans-serif;
       background: var(--fondo);
       color: var(--texto);
       line-height: 1.65;
+      transition: background 0.3s, color 0.3s;
     }
-    header {
+    a { color: var(--enlace); }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--ambar); outline-offset: 3px; }
+    .contenedor { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* Menú */
+    .menu {
+      position: sticky; top: 0; z-index: 20;
       background: var(--verde);
-      color: #fff;
-      padding: 56px 24px 48px;
+      border-bottom: 3px solid var(--ambar);
     }
-    .contenedor { max-width: 760px; margin: 0 auto; }
-    h1 {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(2rem, 6vw, 3rem);
-      margin: 0 0 8px;
-      line-height: 1.15;
+    .menu .contenedor {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 6px 20px; padding-top: 10px; padding-bottom: 10px;
     }
-    .subtitulo { color: var(--ambar); margin: 0 0 24px; font-size: 1.1rem; }
-    .enlaces { display: flex; flex-wrap: wrap; gap: 10px 20px; }
-    .enlaces a { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
-    .enlaces a:hover { color: var(--ambar); }
-    main { padding: 16px 24px 56px; }
-    section { margin-top: 40px; }
+    .marca { color: #fff; font-family: "Fraunces", Georgia, serif; font-weight: 700; text-decoration: none; }
+    .menu-derecha { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .menu ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; padding: 0; }
+    .menu a.enlace { color: #e9efed; text-decoration: none; font-size: 0.95rem; padding-bottom: 2px; border-bottom: 2px solid transparent; }
+    .menu a.enlace:hover { color: var(--ambar); border-bottom-color: var(--ambar); }
+    .tema {
+      background: transparent; color: #fff; border: 1.5px solid var(--ambar);
+      border-radius: 20px; padding: 3px 12px; font: inherit; font-size: 0.85rem; cursor: pointer;
+    }
+    .tema:hover { background: var(--verde-medio); }
+
+    /* Portada con líneas de campo de fútbol */
+    .portada {
+      position: relative; overflow: hidden;
+      background: radial-gradient(circle at 80% 20%, var(--verde-medio), var(--verde) 60%);
+      color: #fff; padding: 80px 0 72px;
+    }
+    .portada::before {
+      content: ""; position: absolute; inset: 0; opacity: 0.16; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 480' fill='none' stroke='%23e8b04b' stroke-width='3'%3E%3Crect x='20' y='20' width='760' height='440'/%3E%3Cline x1='400' y1='20' x2='400' y2='460'/%3E%3Ccircle cx='400' cy='240' r='70'/%3E%3Crect x='20' y='130' width='120' height='220'/%3E%3Crect x='660' y='130' width='120' height='220'/%3E%3Crect x='20' y='190' width='45' height='100'/%3E%3Crect x='735' y='190' width='45' height='100'/%3E%3C/svg%3E");
+      background-size: cover; background-position: center;
+    }
+    .portada .contenedor { position: relative; display: grid; gap: 40px; grid-template-columns: 1fr; align-items: center; }
+    .saludo { color: var(--ambar); margin: 0 0 8px; font-size: 1.05rem; }
+    .portada h1 {
+      font-family: "Fraunces", Georgia, serif; font-weight: 900;
+      font-size: clamp(2.4rem, 8vw, 4.2rem);
+      line-height: 1.05; margin: 0 0 16px;
+    }
+    .portada .rol { font-size: 1.2rem; margin: 0 0 16px; color: #f1f5f4; }
+    .portada p.intro { max-width: 52ch; color: #d3dedb; margin: 0 0 28px; }
+    .botones { display: flex; flex-wrap: wrap; gap: 12px; }
+    .boton {
+      display: inline-block; padding: 11px 22px; border-radius: 8px;
+      font-weight: 700; text-decoration: none; border: 2px solid var(--ambar);
+      transition: transform 0.15s, background 0.15s;
+    }
+    .boton:hover { transform: translateY(-2px); }
+    .boton.principal { background: var(--ambar); color: var(--verde); }
+    .boton.principal:hover { background: #f1c26d; }
+    .boton.secundario { color: #fff; }
+    .boton.secundario:hover { background: var(--verde-medio); }
+
+    .avatar-caja { display: flex; justify-content: center; }
+    .avatar {
+      width: 210px; height: 210px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Fraunces", Georgia, serif; font-weight: 900; font-size: 4.4rem; color: var(--verde);
+      background: linear-gradient(135deg, var(--ambar), #f6d58f);
+      border: 6px solid rgba(255,255,255,0.18);
+      box-shadow: 0 0 0 4px var(--ambar), 0 18px 40px rgba(0,0,0,0.35);
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    @media (min-width: 800px) {
+      .portada .contenedor { grid-template-columns: 1.6fr 1fr; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .portada .contenedor > * { animation: entrada 0.8s ease-out both; }
+      .portada .avatar-caja { animation-delay: 0.15s; }
+      @keyframes entrada { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    }
+
+    /* Números */
+    .numeros { background: var(--ambar); color: var(--verde); }
+    .numeros .contenedor {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding-top: 22px; padding-bottom: 22px;
+    }
+    .numero { text-align: center; }
+    .numero strong { display: block; font-family: "Fraunces", Georgia, serif; font-size: 2rem; line-height: 1.1; }
+    .numero span { font-size: 0.92rem; }
+
+    /* Secciones */
+    section { padding: 64px 0 8px; }
+    section.alterna { background: var(--fondo-2); padding-bottom: 56px; margin-top: 56px; }
     h2 {
       font-family: "Fraunces", Georgia, serif;
-      color: var(--verde);
-      font-size: 1.5rem;
-      margin: 0 0 12px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--ambar);
+      color: var(--titulo); font-size: 1.9rem; margin: 0 0 24px;
+      display: flex; align-items: center; gap: 14px;
     }
-    h3 { margin: 0 0 2px; font-size: 1.05rem; }
-    p { margin: 0 0 12px; max-width: 65ch; }
-    .item { margin-bottom: 18px; }
-    .detalle { color: var(--gris); margin: 0; }
-    a { color: var(--ambar-oscuro); }
-    a:focus-visible { outline: 3px solid var(--ambar); outline-offset: 3px; }
-    .proyectos { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    h2::after { content: ""; flex: 1; height: 2px; background: var(--linea); }
+    h2::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--ambar); flex: none; }
+    h3 { margin: 0 0 2px; font-size: 1.08rem; }
+    p { margin: 0 0 14px; max-width: 68ch; }
+    .detalle { color: var(--gris); margin: 0 0 6px; }
+
+    .dos-columnas { display: grid; gap: 32px; grid-template-columns: 1fr; }
+    @media (min-width: 800px) { .dos-columnas { grid-template-columns: 1fr 1fr; } }
+
+    /* Línea de tiempo */
+    .linea-tiempo { position: relative; padding-left: 30px; }
+    .linea-tiempo::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 3px; background: var(--ambar); border-radius: 2px; }
+    .hecho { position: relative; margin-bottom: 26px; background: var(--tarjeta); border: 1px solid var(--linea); border-radius: 10px; padding: 16px 20px; }
+    .hecho::before {
+      content: ""; position: absolute; left: -30px; top: 20px; width: 17px; height: 17px;
+      border-radius: 50%; background: var(--fondo); border: 4px solid var(--ambar);
+    }
+    section.alterna .hecho::before { background: var(--fondo-2); }
+    .hecho p:last-child { margin-bottom: 0; }
+
+    /* Qué busco */
+    .busco { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .busco-item { background: var(--tarjeta); border: 1px solid var(--linea); border-top: 4px solid var(--ambar); border-radius: 10px; padding: 18px 20px; }
+    .busco-item p { color: var(--gris); margin: 6px 0 0; }
+
+    /* Proyectos */
+    .proyectos { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
     .proyecto {
-      border: 1px solid #d9d6cb;
-      border-radius: 8px;
-      padding: 16px;
-      background: #fff;
+      background: var(--tarjeta); border: 1px solid var(--linea);
+      border-left: 5px solid var(--ambar);
+      border-radius: 10px; padding: 18px 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .proyecto p { margin: 6px 0 10px; color: var(--gris); }
-    footer { text-align: center; color: var(--gris); padding: 24px; font-size: 0.9rem; }
+    .proyecto:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(0,0,0,0.12); }
+    .proyecto p { color: var(--gris); margin: 6px 0 12px; }
+    .proyecto.pronto { border-style: dashed; border-left-style: dashed; background: transparent; }
+    .proyecto.pronto:hover { transform: none; box-shadow: none; }
+    .etiqueta {
+      display: inline-block; font-size: 0.8rem; color: #1c2e2b;
+      background: var(--chip); border-radius: 4px; padding: 1px 9px; margin-bottom: 8px;
+    }
+    :root[data-tema="oscuro"] .etiqueta { color: #e8b04b; }
+
+    .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; padding: 0; }
+    .chips li {
+      background: var(--tarjeta); border: 1px solid var(--linea);
+      border-radius: 20px; padding: 4px 14px; font-size: 0.95rem;
+    }
+    .chips.ambar li { border-color: var(--ambar); }
+    .lista { margin: 8px 0 0; padding-left: 20px; }
+    .lista li { margin-bottom: 6px; }
+
+    .contacto-caja {
+      background: linear-gradient(135deg, var(--verde), var(--verde-medio));
+      color: #fff; border-radius: 14px; padding: 32px;
+      border-bottom: 5px solid var(--ambar);
+    }
+    .contacto-caja p { color: #d9e3e0; }
+    .contacto-lista { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin-top: 20px; }
+    .contacto-lista a {
+      display: block; background: rgba(255,255,255,0.08); color: #fff; text-decoration: none;
+      border: 1px solid rgba(232,176,75,0.5); border-radius: 8px; padding: 12px 16px; word-break: break-word;
+    }
+    .contacto-lista a:hover { background: rgba(232,176,75,0.2); }
+    .contacto-lista small { display: block; color: var(--ambar); font-size: 0.8rem; }
+
+    footer { text-align: center; color: var(--gris); padding: 44px 24px 36px; font-size: 0.92rem; }
+    footer a { color: var(--enlace); }
   </style>
 </head>
 <body>
-  <header>
+
+  <nav class="menu" aria-label="Menú principal">
     <div class="contenedor">
-      <h1>Juan Manuel Cuadrado Muñiz</h1>
-      <p class="subtitulo">Estudiante de 2.º de Desarrollo de Aplicaciones Multiplataforma</p>
-      <div class="enlaces">
-        <a href="https://github.com/jjuanma4">GitHub</a>
-        <a href="https://www.linkedin.com/in/juan-manuel-cuadrado-mu%C3%B1iz-395b6138a/">LinkedIn</a>
-        <a href="mailto:juanmacm2007@gmail.com">juanmacm2007@gmail.com</a>
+      <a class="marca" href="#inicio">Juan Manuel Cuadrado</a>
+      <div class="menu-derecha">
+        <ul>
+          <li><a class="enlace" href="#sobre-mi">Sobre mí</a></li>
+          <li><a class="enlace" href="#formacion">Formación</a></li>
+          <li><a class="enlace" href="#experiencia">Experiencia</a></li>
+          <li><a class="enlace" href="#proyectos">Proyectos</a></li>
+          <li><a class="enlace" href="#competencias">Competencias</a></li>
+          <li><a class="enlace" href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="tema" id="boton-tema" type="button" aria-label="Cambiar entre tema claro y oscuro">Modo oscuro</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="portada" id="inicio">
+    <div class="contenedor">
+      <div>
+        <p class="saludo">Hola, soy</p>
+        <h1>Juan Manuel Cuadrado Muñiz</h1>
+        <p class="rol">Estudiante de 2.º de Desarrollo de Aplicaciones Multiplataforma</p>
+        <p class="intro">Me interesa mucho la programación y busco hacer las prácticas o conseguir un primer puesto como desarrollador junior, en un sitio donde pueda seguir aprendiendo.</p>
+        <div class="botones">
+          <a class="boton principal" href="mailto:juanmacm2007@gmail.com">Escríbeme</a>
+          <a class="boton secundario" href="https://www.linkedin.com/in/juan-manuel-cuadrado-mu%C3%B1iz-395b6138a/">LinkedIn</a>
+          <a class="boton secundario" href="https://github.com/jjuanma4">GitHub</a>
+        </div>
+      </div>
+      <div class="avatar-caja">
+        <!-- Para poner tu foto: sube foto.jpg al repo y cambia la línea de abajo por: <div class="avatar"><img src="foto.jpg" alt="Juan Manuel Cuadrado"></div> -->
+        <div class="avatar" role="img" aria-label="Iniciales JM">JM</div>
       </div>
     </div>
   </header>
 
-  <main>
+  <div class="numeros">
     <div class="contenedor">
+      <div class="numero"><strong>2.º</strong><span>curso de DAM</span></div>
+      <div class="numero"><strong>4</strong><span>veranos trabajando</span></div>
+      <div class="numero"><strong>2</strong><span>idiomas</span></div>
+      <div class="numero"><strong>Ya</strong><span>incorporación inmediata</span></div>
+    </div>
+  </div>
 
-      <section id="sobre-mi">
+  <main>
+
+    <section id="sobre-mi">
+      <div class="contenedor">
         <h2>Sobre mí</h2>
-        <p>Tengo 19 años y vivo en Orellana la Vieja, Badajoz. Estoy cursando 2.º de DAM y me interesa mucho la programación. Busco hacer las prácticas (FCT) o conseguir un primer puesto como desarrollador junior en una empresa donde pueda seguir aprendiendo.</p>
-        <p>Me encanta el deporte, sobre todo el fútbol. Trabajar como monitor y en el campo durante cuatro veranos me ha enseñado a ser responsable, constante y a llevarme bien con personas de todas las edades.</p>
-      </section>
+        <div class="dos-columnas">
+          <div>
+            <p>Me llamo Juan Manuel, tengo 19 años y vivo en Orellana la Vieja, en Badajoz. Vengo del Bachillerato Científico-Tecnológico y ahora estoy en segundo curso de DAM, donde cada día me gusta más programar.</p>
+            <p>Ahora quiero aplicar lo que he aprendido en clase en una empresa de verdad y seguir creciendo como desarrollador.</p>
+          </div>
+          <div>
+            <p>Me encanta el deporte, sobre todo el fútbol. He sido monitor en campamentos de verano y he trabajado en la campaña agrícola durante cuatro veranos. Eso me ha enseñado a ser responsable y constante, y a llevarme bien con personas de todas las edades.</p>
+            <p>Tengo carnet de conducir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section id="proyectos">
+    <section id="busco" class="alterna">
+      <div class="contenedor">
+        <h2>Qué busco</h2>
+        <div class="busco">
+          <div class="busco-item"><h3>Prácticas (FCT)</h3><p>Hacer las prácticas del ciclo en una empresa de desarrollo.</p></div>
+          <div class="busco-item"><h3>Primer empleo</h3><p>Un puesto como desarrollador junior para empezar mi carrera.</p></div>
+          <div class="busco-item"><h3>Seguir aprendiendo</h3><p>Un equipo donde pueda aprender de gente con más experiencia.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="formacion">
+      <div class="contenedor">
+        <h2>Formación</h2>
+        <div class="linea-tiempo">
+          <div class="hecho">
+            <h3>Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
+            <p class="detalle">Cursando 2.º curso</p>
+          </div>
+          <div class="hecho">
+            <h3>Bachillerato Científico-Tecnológico</h3>
+            <p class="detalle">Finalizado</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="alterna">
+      <div class="contenedor">
+        <h2>Experiencia</h2>
+        <div class="linea-tiempo">
+          <div class="hecho">
+            <h3>Monitor de fútbol en campamentos de verano</h3>
+            <p>Dirección de entrenamientos y actividades deportivas con grupos de niños. Coordinación con otros monitores y comunicación con las familias.</p>
+          </div>
+          <div class="hecho">
+            <h3>Trabajador agrícola en la campaña de verano</h3>
+            <p>Trabajo físico y en equipo, con autonomía y cumpliendo horarios y objetivos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="contenedor">
         <h2>Proyectos</h2>
         <div class="proyectos">
-          <div class="proyecto">
+          <article class="proyecto">
+            <span class="etiqueta">HTML</span>
             <h3>Currículum web</h3>
             <p>Mi currículum hecho en HTML.</p>
-            <a href="https://github.com/jjuanma4/Curriculum">Ver el código</a>
-          </div>
-          <div class="proyecto">
+            <a href="https://github.com/jjuanma4/Curriculum">Ver el código en GitHub</a>
+          </article>
+          <article class="proyecto">
+            <span class="etiqueta">Clase</span>
             <h3>Prácticas de PMDM</h3>
-            <p>Ejercicios y prácticas de clase de la asignatura de PMDM.</p>
-            <a href="https://github.com/jjuanma4/pmdm_clase_juanma">Ver el código</a>
+            <p>Ejercicios y prácticas que hago en clase en la asignatura de PMDM.</p>
+            <a href="https://github.com/jjuanma4/pmdm_clase_juanma">Ver el código en GitHub</a>
+          </article>
+          <article class="proyecto">
+            <span class="etiqueta">HTML y CSS</span>
+            <h3>Este portfolio</h3>
+            <p>La web que estás viendo, publicada con GitHub Pages.</p>
+            <a href="https://github.com/jjuanma4/portfolio">Ver el código en GitHub</a>
+          </article>
+          <article class="proyecto pronto">
+            <span class="etiqueta">Próximamente</span>
+            <h3>Más proyectos</h3>
+            <p>Iré subiendo a GitHub los trabajos que haga en clase.</p>
+            <a href="https://github.com/jjuanma4?tab=repositories">Ver todos mis repositorios</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="competencias" class="alterna">
+      <div class="contenedor">
+        <h2>Competencias</h2>
+        <div class="dos-columnas">
+          <div>
+            <h3>Herramientas</h3>
+            <ul class="chips ambar">
+              <li>HTML</li>
+              <li>Git</li>
+              <li>GitHub</li>
+              <!-- Añade aquí más, por ejemplo: <li>Java</li> <li>SQL</li> -->
+            </ul>
+          </div>
+          <div>
+            <h3>Personales</h3>
+            <ul class="chips">
+              <li>Comunicación</li>
+              <li>Trabajo en equipo</li>
+              <li>Liderazgo de grupos</li>
+              <li>Responsabilidad</li>
+              <li>Constancia</li>
+              <li>Aprendizaje rápido</li>
+            </ul>
           </div>
         </div>
-      </section>
+        <h3 style="margin-top:32px">Idiomas</h3>
+        <ul class="chips">
+          <li>Español: nativo</li>
+          <li>Inglés: nivel medio</li>
+        </ul>
+      </div>
+    </section>
 
-      <section id="formacion">
-        <h2>Formación</h2>
-        <div class="item">
-          <h3>Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
-          <p class="detalle">Cursando 2.º curso</p>
-        </div>
-        <div class="item">
-          <h3>Bachillerato Científico-Tecnológico</h3>
-          <p class="detalle">Finalizado</p>
-        </div>
-      </section>
-
-      <section id="experiencia">
-        <h2>Experiencia</h2>
-        <div class="item">
-          <h3>Monitor de fútbol en campamentos de verano</h3>
-          <p>Dirección de entrenamientos y actividades deportivas con grupos de niños. Coordinación con otros monitores y comunicación con las familias.</p>
-        </div>
-        <div class="item">
-          <h3>Trabajador agrícola en la campaña de verano</h3>
-          <p>Trabajo en equipo, con autonomía y cumpliendo horarios y objetivos.</p>
-        </div>
-      </section>
-
-      <section id="idiomas">
-        <h2>Idiomas</h2>
-        <p>Español: nativo. Inglés: nivel medio.</p>
-      </section>
-
-      <section id="contacto">
+    <section id="contacto">
+      <div class="contenedor">
         <h2>Contacto</h2>
-        <p>Tengo disponibilidad inmediata. Puedes escribirme a <a href="mailto:juanmacm2007@gmail.com">juanmacm2007@gmail.com</a> o encontrarme en <a href="https://www.linkedin.com/in/juan-manuel-cuadrado-mu%C3%B1iz-395b6138a/">LinkedIn</a>.</p>
-      </section>
+        <div class="contacto-caja">
+          <p style="margin-bottom:0">Si tienes una oferta de prácticas o de trabajo como desarrollador junior, estaré encantado de hablar contigo. Puedo incorporarme de inmediato.</p>
+          <div class="contacto-lista">
+            <a href="mailto:juanmacm2007@gmail.com"><small>Correo</small>juanmacm2007@gmail.com</a>
+            <a href="https://www.linkedin.com/in/juan-manuel-cuadrado-mu%C3%B1iz-395b6138a/"><small>LinkedIn</small>Juan Manuel Cuadrado Muñiz</a>
+            <a href="https://github.com/jjuanma4"><small>GitHub</small>github.com/jjuanma4</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </div>
   </main>
 
-  <footer>Juan Manuel Cuadrado Muñiz</footer>
+  <footer>
+    Juan Manuel Cuadrado Muñiz · Badajoz · <a href="#inicio">Volver arriba</a>
+  </footer>
+
+  <script>
+    (function () {
+      var raiz = document.documentElement;
+      var boton = document.getElementById("boton-tema");
+      var guardado = null;
+      try { guardado = localStorage.getItem("tema"); } catch (e) {}
+      var oscuroSistema = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var tema = guardado || (oscuroSistema ? "oscuro" : "claro");
+
+      function aplicar(t) {
+        if (t === "oscuro") { raiz.setAttribute("data-tema", "oscuro"); boton.textContent = "Modo claro"; }
+        else { raiz.removeAttribute("data-tema"); boton.textContent = "Modo oscuro"; }
+      }
+      aplicar(tema);
+
+      boton.addEventListener("click", function () {
+        tema = (tema === "oscuro") ? "claro" : "oscuro";
+        aplicar(tema);
+        try { localStorage.setItem("tema", tema); } catch (e) {}
+      });
+    })();
+  </script>
 </body>
 </html>
