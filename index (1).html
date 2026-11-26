@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juan Manuel Cuadrado Muñiz · Portfolio</title>
+  <meta name="description" content="Portfolio de Juan Manuel Cuadrado Muñiz, estudiante de 2.º de DAM.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #1c2e2b;
+      --ambar: #e8b04b;
+      --ambar-oscuro: #9a5f10;
+      --fondo: #fbfaf6;
+      --texto: #212b29;
+      --gris: #5b6664;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.65;
+    }
+    header {
+      background: var(--verde);
+      color: #fff;
+      padding: 56px 24px 48px;
+    }
+    .contenedor { max-width: 760px; margin: 0 auto; }
+    h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin: 0 0 8px;
+      line-height: 1.15;
+    }
+    .subtitulo { color: var(--ambar); margin: 0 0 24px; font-size: 1.1rem; }
+    .enlaces { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+    .enlaces a { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+    .enlaces a:hover { color: var(--ambar); }
+    main { padding: 16px 24px 56px; }
+    section { margin-top: 40px; }
+    h2 {
+      font-family: "Fraunces", Georgia, serif;
+      color: var(--verde);
+      font-size: 1.5rem;
+      margin: 0 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--ambar);
+    }
+    h3 { margin: 0 0 2px; font-size: 1.05rem; }
+    p { margin: 0 0 12px; max-width: 65ch; }
+    .item { margin-bottom: 18px; }
+    .detalle { color: var(--gris); margin: 0; }
+    a { color: var(--ambar-oscuro); }
+    a:focus-visible { outline: 3px solid var(--ambar); outline-offset: 3px; }
+    .proyectos { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .proyecto {
+      border: 1px solid #d9d6cb;
+      border-radius: 8px;
+      padding: 16px;
+      background: #fff;
+    }
+    .proyecto p { margin: 6px 0 10px; color: var(--gris); }
+    footer { text-align: center; color: var(--gris); padding: 24px; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="contenedor">
+      <h1>Juan Manuel Cuadrado Muñiz</h1>
+      <p class="subtitulo">Estudiante de 2.º de Desarrollo de Aplicaciones Multiplataforma</p>
+      <div class="enlaces">
+        <a href="https://github.com/jjuanma4">GitHub</a>
+        <a href="https://www.linkedin.com/in/juan-manuel-cuadrado-mu%C3%B1iz-395b6138a/">LinkedIn</a>
+        <a href="mailto:juanmacm2007@gmail.com">juanmacm2007@gmail.com</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="contenedor">
+
+      <section id="sobre-mi">
+        <h2>Sobre mí</h2>
+        <p>Tengo 19 años y vivo en Orellana la Vieja, Badajoz. Estoy cursando 2.º de DAM y me interesa mucho la programación. Busco hacer las prácticas (FCT) o conseguir un primer puesto como desarrollador junior en una empresa donde pueda seguir aprendiendo.</p>
+        <p>Me encanta el deporte, sobre todo el fútbol. Trabajar como monitor y en el campo durante cuatro veranos me ha enseñado a ser responsable, constante y a llevarme bien con personas de todas las edades.</p>
+      </section>
+
+      <section id="proyectos">
+        <h2>Proyectos</h2>
+        <div class="proyectos">
+          <div class="proyecto">
+            <h3>Currículum web</h3>
+            <p>Mi currículum hecho en HTML.</p>
+            <a href="https://github.com/jjuanma4/Curriculum">Ver el código</a>
+          </div>
+          <div class="proyecto">
+            <h3>Prácticas de PMDM</h3>
+            <p>Ejercicios y prácticas de clase de la asignatura de PMDM.</p>
+            <a href="https://github.com/jjuanma4/pmdm_clase_juanma">Ver el código</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="formacion">
+        <h2>Formación</h2>
+        <div class="item">
+          <h3>Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
+          <p class="detalle">Cursando 2.º curso</p>
+        </div>
+        <div class="item">
+          <h3>Bachillerato Científico-Tecnológico</h3>
+          <p class="detalle">Finalizado</p>
+        </div>
+      </section>
+
+      <section id="experiencia">
+        <h2>Experiencia</h2>
+        <div class="item">
+          <h3>Monitor de fútbol en campamentos de verano</h3>
+          <p>Dirección de entrenamientos y actividades deportivas con grupos de niños. Coordinación con otros monitores y comunicación con las familias.</p>
+        </div>
+        <div class="item">
+          <h3>Trabajador agrícola en la campaña de verano</h3>
+          <p>Trabajo en equipo, con autonomía y cumpliendo horarios y objetivos.</p>
+        </div>
+      </section>
+
+      <section id="idiomas">
+        <h2>Idiomas</h2>
+        <p>Español: nativo. Inglés: nivel medio.</p>
+      </section>
+
+      <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Tengo disponibilidad inmediata. Puedes escribirme a <a href="mailto:juanmacm2007@gmail.com">juanmacm2007@gmail.com</a> o encontrarme en <a href="https://www.linkedin.com/in/juan-manuel-cuadrado-mu%C3%B1iz-395b6138a/">LinkedIn</a>.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>Juan Manuel Cuadrado Muñiz</footer>
+</body>
+</html>
